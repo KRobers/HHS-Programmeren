@@ -66,3 +66,41 @@ del invite_list[0]
 del invite_list[0]
 
 print(invite_list)
+
+#3.8
+print("\n 3.8 \n")
+
+places = ["New York", "Mexico City", "Machu Picchu", "Kathmandu", "Lima", "Seoul"]
+print(places) #origineel
+
+print(sorted(places)) #alfabetisch
+print(places) #origineel
+print(sorted(places, reverse=True))#ongekeerd alfabetisch
+print(places) #origineel
+places.reverse()
+print(places) # omgekeerd
+places.reverse()
+print(places) #orginileel
+places.sort()
+print(places)#alfabetisch
+places.sort(reverse=True)
+print(places) #mgekeerd alfabetrisch
+
+#3.9
+print("\n 3.9 \n")
+
+invite_list = ["Isaac Newton", "Albert Einstein", "Galileo Galilei", "Max Planck", "Richard Feynman", "Niels Bohr"]
+
+i = len(invite_list)
+print("Er komen " + str(i) + "mensen op het diner")
+
+#3.10
+print("\n 3.10 \n")
+
+#Zie 3.8, praktisch dezelfde opdracht
+print("Zie 3.8, praktisch dezelfde opdracht")
+
+#3.11
+print("\n 3.11 \n")
+
+#print(invite_list[9])
