@@ -24,4 +24,39 @@ woordenboek = {
 }
 
 for x in woordenboek:
+    print(x + ": " + woordenboek[x])
+
+
+#6.4
+
+print("\n 6.4 \n")
+
+#Al goed gedaan in vorige opdracht. Meer toevoegen veel tikwerk.
+
+#6.5
+print("\n 6.5 \n")
+
+rivers = {
+
+    "Nile": "Egypt",
+    "Amazon": "Brazil",
+    "Yangtze": "China",
+    "Mississippi": "United States",
+    "Rhine": "Germany"
+}
+
+for x in rivers:
+    print("The " + x + " runs through " + rivers[x])
+
+for x in rivers:
     print(x)
+
+for x in rivers:
+    print(rivers[x])
+
+#6.7
+
+print("\n 6.7 \n")
+
+
+
