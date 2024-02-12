@@ -54,9 +54,93 @@ for x in rivers:
 for x in rivers:
     print(rivers[x])
 
+#6.6
+
+print("\n 6.6 \n")
+
+favorite_languages = {
+    'jen': 'python',
+    'Daan': '',
+    'sarah': 'c',
+    'edward': 'ruby',
+    'phil': 'python',
+    'Henk': '',
+    'Piet': '',
+
+ }
+
+for name, language in favorite_languages.items():
+
+    if language != '':
+        print(name.title() + ", thank you for taking the poll")
+    else:
+        print(name.title()+ ", what's your favorite language?")
+        favorite_languages.update({name: input()})
+
+for name, language in favorite_languages.items():
+    print(name + language)
+
+
 #6.7
 
 print("\n 6.7 \n")
 
+kaj = {
+    "voornaam" : "Kaj",
+    "Achternaam" : "Robers",
+    "Straatnaam": "Snoekbaarssingel",
+    "Postcode": "2492MH",
+    "Huisnummer": 42,
+    "Stad": "Den Haag",
+}
 
+sandra = {
+    "voornaam" : "Sandra",
+    "Achternaam" : "Robers",
+    "Straatnaam": "Snoekbaarssingel",
+    "Postcode": "2492MH",
+    "Huisnummer": 42,
+    "Stad": "Den Haag",
+}
+
+john = {
+    "voornaam" : "John",
+    "Achternaam" : "Robers",
+    "Straatnaam": "Snoekbaarssingel",
+    "Postcode": "2492MH",
+    "Huisnummer": 42,
+    "Stad": "Den Haag",
+}
+
+mensen = [kaj, john, sandra]
+
+for x in mensen:
+    print(x)
+
+#6.11
+
+print("\n 6.11 \n")
+
+cities = {
+    'Amsterdam':{
+        'Inwoners': 850000,
+        'Land':'Nederland',
+        'Feit': 'Hoofdstad'
+    },
+    'Den Haag': {
+        'Inwoners': 500000,
+        'Land':'Nederland',
+        'Feit': "Regering"
+    },
+    'Rotterdam': {
+        'Inwoners': 650000,
+        'Land':'Nederland',
+        'Feit': 'Erasmusbrug'
+    }
+}
+
+for x in cities:
+    print(x)
+    for x in cities.items():
+        print(x)
 
