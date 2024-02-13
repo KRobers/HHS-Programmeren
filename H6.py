@@ -139,8 +139,12 @@ cities = {
     }
 }
 
-for x in cities:
+for x, y in cities.items():
     print(x)
-    for x in cities.items():
-        print(x)
+    print(y)
 
+#6.12
+
+print("\n 6.12 \n")
+
+#Veel tikwerk om uit te breiden
