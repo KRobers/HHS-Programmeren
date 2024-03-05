@@ -147,3 +147,4 @@ show_magicians(great_magician)
 print("\n 8.15 / 16 / 18 \n")
 
 # erg makkelijk. veel werk om losse bestanden te gaan maken.
+
