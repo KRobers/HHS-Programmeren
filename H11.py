@@ -47,3 +47,5 @@ class TestEmployee(unittest.TestCase):
         self.myemployee.give_raise(10000)
         self.assertEqual(self.myemployee.annual_salary, 11000)
 
+if __name__ == '__main__':
+    unittest.main()
