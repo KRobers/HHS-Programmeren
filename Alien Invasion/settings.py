@@ -19,3 +19,5 @@ class Settings():
 
         # Stel de achtergrondkleur in
         self.bg_color = (0, 0, 0)
+
+        self.ship_speed_factor = 5

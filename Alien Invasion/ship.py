@@ -2,18 +2,32 @@ import pygame
 
 class Ship():
 
-    def __init__(self, screen):
+    def __init__(self, settings, screen):
         self.screen = screen
+        self.settings = settings
 
         # Originele afbeelding was te groot. Import hem, daarna schaalt pygame hem kleiner naar 50x50 pixels
         self.originele_afbeelding = pygame.image.load('Artwork/Ship.bmp')
-        self.image = pygame.transform.scale(self.originele_afbeelding, (50,50))
+        self.image = pygame.transform.scale(self.originele_afbeelding, (100,100))
 
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
 
         self.rect.centerx = self.screen_rect.centerx
         self.rect.bottom = self.screen_rect.bottom
+
+        self.center = float(self.rect.centerx)
+
+        self.moving_right = False
+        self.moving_left = False
+
+    def update(self):
+        if self.moving_right and self.rect.right < self.screen_rect.right:
+            self.center += self.settings.ship_speed_factor
+        elif self.moving_left  and self.rect.left > 0:
+            self.center -= self.settings.ship_speed_factor
+
+        self.rect.centerx = self.center
 
     def blitme(self):
 
