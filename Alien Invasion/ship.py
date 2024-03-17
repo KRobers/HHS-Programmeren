@@ -4,7 +4,11 @@ class Ship():
 
     def __init__(self, screen):
         self.screen = screen
-        self.image = pygame.image.load('Artwork/Ship.bmp')
+
+        # Originele afbeelding was te groot. Import hem, daarna schaalt pygame hem kleiner naar 50x50 pixels
+        self.originele_afbeelding = pygame.image.load('Artwork/Ship.bmp')
+        self.image = pygame.transform.scale(self.originele_afbeelding, (50,50))
+
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
 
