@@ -142,25 +142,25 @@ class AlienInvasion:
     def _check_bullet_alien_collisions(self):
         """Respond to bullet-alien collisions."""
         # Remove any bullets and aliens that have collided.
-        collisions = pygame.sprite.groupcollide(self.bullets, self.aliens, True, True)
+        collisions = pygame.sprite.groupcollide(self.bullets, self.aliens, True, False)
 
         if collisions:
             for aliens in collisions.values():
                 for alien in aliens:
-                    if isinstance(alien, Alien2):
-                        print('Is instance')
-                        print(alien.health)
-                        alien.decrease_health()
+                    if isinstance(alien, Alien2): #checkt of instance alien2 type is
+                        alien.decrease_health() #haalt de health naar beneden
                         if alien.health <= 0:
-                            print('Gaat if door')
-                            self.stats.score += self.settings.alien2_points * len(aliens)
+                            self.stats.score += self.settings.alien2_points * len(aliens) #geeft die sappige extra puntjes
                             self.sb.prep_score()
                             self.sb.check_high_score()
                             self.aliens.remove(alien)
-                    else:
-                        self.stats.score += self.settings.alien_points * len(aliens)
-                        self.sb.prep_score()
-                        self.sb.check_high_score()
+                    elif isinstance(alien, Alien):
+                        alien.decrease_health()
+                        if alien.health <= 0:
+                            self.stats.score += self.settings.alien_points * len(aliens)
+                            self.sb.prep_score()
+                            self.sb.check_high_score()
+                            self.aliens.remove(alien)
 
 
         if not self.aliens:

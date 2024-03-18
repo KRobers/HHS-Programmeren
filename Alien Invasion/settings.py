@@ -11,6 +11,9 @@ class Settings:
         breedte = user.GetSystemMetrics(0)
         hoogte = user.GetSystemMetrics(1)
 
+        self.standard_screen_width = 1200
+        self.standard_screen_height = 800
+
         # Controleer of de systeembreedte en -hoogte groter zijn dan 1200 en 800
         if breedte > 1200 and hoogte > 800:
             self.screen_width = breedte
@@ -18,8 +21,8 @@ class Settings:
 
         # Gebruik de minimale  breedte en hoogte als fallback
         else:
-            self.screen_width = 1200
-            self.screen_height = 800
+            self.screen_width = self.standard_screen_width
+            self.screen_height = self.standard_screen_height
 
         self.bg_color = (0, 0, 0)
 
@@ -44,17 +47,21 @@ class Settings:
 
     def initialize_dynamic_settings(self):
         """Initialize settings that change throughout the game."""
-        self.ship_speed = 5
-        self.bullet_speed = 2.5
-        self.alien_speed = 1.0
+
+        #zorgt ervoor dat afhankelijk van de resolutie de snelheiden hetzelfde blijven
+        width_ratio = self.screen_width / self.standard_screen_width
+
+        self.ship_speed = 7 * width_ratio
+        self.bullet_speed = 2.5 * width_ratio
+        self.alien_speed = 1.0 * width_ratio
 
         # fleet_direction of 1 represents right; -1 represents left.
         self.fleet_direction = 1
 
         # Scoring settings
-        self.alien_points = 100
+        self.alien_points = 50
         self.alien2_points = 250
-        self.alien2_chance = 0.1
+        self.alien2_chance = 0.05 #percentage kans dat de moeilijkere spawnt.
 
     def increase_speed(self):
         """Increase speed settings and alien point values."""
@@ -63,3 +70,4 @@ class Settings:
         self.alien_speed *= self.speedup_scale
 
         self.alien_points = int(self.alien_points * self.score_scale)
+        self.alien2_points = int(self.alien_points * self.score_scale)

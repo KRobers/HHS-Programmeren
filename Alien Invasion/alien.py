@@ -9,6 +9,7 @@ class Alien(Sprite):
     def __init__(self, ai_game):
         """Initialize the alien and set its starting position."""
         super().__init__()
+        self.health = 1
         self.screen = ai_game.screen
         self.settings = ai_game.settings
 
@@ -34,6 +35,9 @@ class Alien(Sprite):
         self.x += self.settings.alien_speed * self.settings.fleet_direction
         self.rect.x = self.x
 
+    def decrease_health(self):
+        self.health = self.health - 1
+
 class Alien2(Alien):
 
     def __init__(self, ai_game):
@@ -41,7 +45,7 @@ class Alien2(Alien):
         super().__init__(ai_game)
         self.health = 3
         self.image = pygame.image.load('Artwork/Alien_2.bmp')
-        self.image = pygame.transform.scale(self.image, (40, 40))
+        self.image = pygame.transform.scale(self.image, (60, 60))
         self.rect = self.image.get_rect()
 
         self.rect.x = self.rect.width
@@ -55,5 +59,3 @@ class Alien2(Alien):
 
     def decrease_health(self):
             self.health = self.health - 1
-            print('Wordt aangeroepen!')
-
