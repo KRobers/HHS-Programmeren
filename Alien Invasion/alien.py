@@ -38,7 +38,7 @@ class Alien(Sprite):
     def decrease_health(self):
         self.health = self.health - 1
 
-class Alien2(Alien):
+class Alien2(Alien): #2e alien met ander afbeelding en andere variabelen.
 
     def __init__(self, ai_game):
 

@@ -1,8 +1,6 @@
 import ctypes
-
 class Settings:
     """A class to store all settings for Alien Invasion."""
-
     def __init__(self):
         """Initialize the game's static settings."""
 
@@ -48,9 +46,10 @@ class Settings:
     def initialize_dynamic_settings(self):
         """Initialize settings that change throughout the game."""
 
-        #zorgt ervoor dat afhankelijk van de resolutie de snelheiden hetzelfde blijven
+        #zorgt ervoor dat afhankelijk van de resolutie de snelheiden hetzelfde blijven met een ratio
         width_ratio = self.screen_width / self.standard_screen_width
 
+        # snelheden worden vermenigvuldigd tegen de ratio
         self.ship_speed = 7 * width_ratio
         self.bullet_speed = 2.5 * width_ratio
         self.alien_speed = 1.0 * width_ratio
@@ -60,7 +59,7 @@ class Settings:
 
         # Scoring settings
         self.alien_points = 50
-        self.alien2_points = 250
+        self.alien2_points = 250 #extra puntjes voor alien 2
         self.alien2_chance = 0.05 #percentage kans dat de moeilijkere spawnt.
 
     def increase_speed(self):
@@ -70,4 +69,4 @@ class Settings:
         self.alien_speed *= self.speedup_scale
 
         self.alien_points = int(self.alien_points * self.score_scale)
-        self.alien2_points = int(self.alien_points * self.score_scale)
+        self.alien2_points = int(self.alien_points * self.score_scale) #toegevoegd voor alien2 class

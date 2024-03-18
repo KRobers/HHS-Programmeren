@@ -154,10 +154,10 @@ class AlienInvasion:
                             self.sb.prep_score()
                             self.sb.check_high_score()
                             self.aliens.remove(alien)
-                    elif isinstance(alien, Alien):
+                    else:
                         alien.decrease_health()
                         if alien.health <= 0:
-                            self.stats.score += self.settings.alien_points * len(aliens)
+                            self.stats.score += self.settings.alien_points * len(aliens) #geeft de normale puntjes
                             self.sb.prep_score()
                             self.sb.check_high_score()
                             self.aliens.remove(alien)
