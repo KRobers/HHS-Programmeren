@@ -3,7 +3,7 @@ user32 = ctypes.windll.user32
 screensize = user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
 print(screensize)
 
-user = ctypes.windll.user32
+        user = ctypes.windll.user32
         breedte = user.GetSystemMetrics(0)
         hoogte = user.GetSystemMetrics(1)
 
