@@ -49,10 +49,11 @@ class Alien2(Alien):
 
         self.x = float(self.rect.x)
 
-        self.bullets_required = 3
 
     def update(self):
             super().update()
 
     def decrease_health(self):
-            self.health -= 1
+            self.health = self.health - 1
+            print('Wordt aangeroepen!')
+

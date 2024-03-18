@@ -148,9 +148,12 @@ class AlienInvasion:
             for aliens in collisions.values():
                 for alien in aliens:
                     if isinstance(alien, Alien2):
+                        print('Is instance')
+                        print(alien.health)
                         alien.decrease_health()
                         if alien.health <= 0:
-                            self.stats.score += self.settings.alien2_points
+                            print('Gaat if door')
+                            self.stats.score += self.settings.alien2_points * len(aliens)
                             self.sb.prep_score()
                             self.sb.check_high_score()
                             self.aliens.remove(alien)

@@ -52,7 +52,7 @@ class Settings:
         self.fleet_direction = 1
 
         # Scoring settings
-        self.alien_points = 50
+        self.alien_points = 100
         self.alien2_points = 250
         self.alien2_chance = 0.1
 
