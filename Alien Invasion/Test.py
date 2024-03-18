@@ -1,18 +1,37 @@
-import ctypes
-user32 = ctypes.windll.user32
-screensize = user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
-print(screensize)
+import unittest
+from unittest.mock import patch
+from settings import Settings
 
-        user = ctypes.windll.user32
-        breedte = user.GetSystemMetrics(0)
-        hoogte = user.GetSystemMetrics(1)
+class TestScreenSettings(unittest.TestCase):
+    @patch('ctypes.windll.user32.GetSystemMetrics')
+    def test_screen_dimensions_greater_than_standard(self, mock_GetSystemMetrics):
+        # Verzin waarde
+        mock_GetSystemMetrics.side_effect = [
+            1600,  # Imitatie systeembreedte
+            1000   # Imitatie systeemhoogte
+        ]
 
-        # Controleer of de systeembreedte en -hoogte groter zijn dan 1200 en 800
-        if breedte > 1200 and hoogte > 800:
-            self.screen_width = breedte
-            self.screen_height = hoogte
+        # Creëer een instantie van de Settings-class
+        settings = Settings()
 
-        # Gebruik de minimale  breedte en hoogte als fallback
-        else:
-            self.screen_width = 1200
-            self.screen_height = 800
+        # Controleer of de systeembreedte en -hoogte correct zijn ingesteld
+        self.assertEqual(settings.screen_width, 1600)
+        self.assertEqual(settings.screen_height, 1000)
+
+    @patch('ctypes.windll.user32.GetSystemMetrics')
+    def test_screen_fallback_to_standard(self, mock_GetSystemMetrics):
+        #verzin waarde
+        mock_GetSystemMetrics.side_effect = [
+            1000,  # Imitatie systeembreedte
+            600    # imitatie systeemhoogte
+        ]
+
+        # Creëer een instantie van de Settings-class
+        settings = Settings()
+
+        # Controleer of de standaardafmetingen worden gebruikt als de systeembreedte en -hoogte te klein zijn
+        self.assertEqual(settings.screen_width, 1200)
+        self.assertEqual(settings.screen_height, 800)
+
+if __name__ == '__main__':
+    unittest.main()
