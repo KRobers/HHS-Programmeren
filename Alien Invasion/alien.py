@@ -39,6 +39,7 @@ class Alien2(Alien):
     def __init__(self, ai_game):
 
         super().__init__(ai_game)
+        self.health = 3
         self.image = pygame.image.load('Artwork/Alien_2.bmp')
         self.image = pygame.transform.scale(self.image, (40, 40))
         self.rect = self.image.get_rect()
@@ -50,10 +51,8 @@ class Alien2(Alien):
 
         self.bullets_required = 3
 
-        def update(self):
+    def update(self):
             super().update()
 
-        def hit(self):
-            self.bullets_required -= 1
-            if self.bullets_required <= 0:
-                self.kill()
+    def decrease_health(self):
+            self.health -= 1

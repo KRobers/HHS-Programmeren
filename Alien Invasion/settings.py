@@ -53,6 +53,8 @@ class Settings:
 
         # Scoring settings
         self.alien_points = 50
+        self.alien2_points = 250
+        self.alien2_chance = 0.1
 
     def increase_speed(self):
         """Increase speed settings and alien point values."""

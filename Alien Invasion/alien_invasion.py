@@ -10,6 +10,7 @@ from button import Button
 from ship import Ship
 from bullet import Bullet
 from alien import Alien, Alien2
+import random
 
 
 class AlienInvasion:
@@ -141,14 +142,23 @@ class AlienInvasion:
     def _check_bullet_alien_collisions(self):
         """Respond to bullet-alien collisions."""
         # Remove any bullets and aliens that have collided.
-        collisions = pygame.sprite.groupcollide(
-                self.bullets, self.aliens, True, True)
+        collisions = pygame.sprite.groupcollide(self.bullets, self.aliens, True, True)
 
         if collisions:
             for aliens in collisions.values():
-                self.stats.score += self.settings.alien_points * len(aliens)
-            self.sb.prep_score()
-            self.sb.check_high_score()
+                for alien in aliens:
+                    if isinstance(alien, Alien2):
+                        alien.decrease_health()
+                        if alien.health <= 0:
+                            self.stats.score += self.settings.alien2_points
+                            self.sb.prep_score()
+                            self.sb.check_high_score()
+                            self.aliens.remove(alien)
+                    else:
+                        self.stats.score += self.settings.alien_points * len(aliens)
+                        self.sb.prep_score()
+                        self.sb.check_high_score()
+
 
         if not self.aliens:
             # Destroy existing bullets and create new fleet.
@@ -211,7 +221,10 @@ class AlienInvasion:
         current_x, current_y = alien_width, alien_height
         while current_y < (self.settings.screen_height - 3 * alien_height):
             while current_x < (self.settings.screen_width - 2 * alien_width):
-                self._create_alien(current_x, current_y)
+                if random.random() < self.settings.alien2_chance: #checkt de kans op het spawnen van een andere alien
+                    self._create_alien2(current_x, current_y)
+                else: #Als hij niet overeenkomst spawnt hij een normale
+                    self._create_alien(current_x, current_y)
                 current_x += 2 * alien_width
 
             # Finished a row; reset x value, and increment y value.
@@ -225,6 +238,14 @@ class AlienInvasion:
         new_alien.rect.x = x_position
         new_alien.rect.y = y_position
         self.aliens.add(new_alien)
+
+    def _create_alien2(self, x_position, y_position):
+        new_alien2 = Alien2(self)
+        new_alien2.x = x_position
+        new_alien2.rect.x = x_position
+        new_alien2.rect.y = y_position
+        self.aliens.add(new_alien2)
+
 
     def _check_fleet_edges(self):
         """Respond appropriately if any aliens have reached an edge."""
